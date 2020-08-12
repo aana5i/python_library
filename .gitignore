@@ -1,3 +1,4 @@
 __pycache__/**
 venv-mt/**
-playground/importer/__pycache__/**
+**/**/__pycache__/**
+**/__pycache__/**
