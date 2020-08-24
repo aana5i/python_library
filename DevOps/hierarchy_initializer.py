@@ -2,7 +2,7 @@ import os
 import argparse
 
 
-class hierarchyInitializer:
+class HierarchyInitializer:
     def __init__(self, depth):
         self.depth = depth
 
@@ -73,5 +73,5 @@ if __name__ == '__main__':
     parser.add_argument('--depth', '-d', type=int, help='Depth number')
 
     args = parser.parse_args()
-    hi = hierarchyInitializer(args.depth)
+    hi = HierarchyInitializer(args.depth)
     hi.hierarchy_initializer()
