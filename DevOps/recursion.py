@@ -46,7 +46,7 @@ class HierarchyInitializerRecursive:
         path = os.getcwd()
 
         # recursive  // remove the 0 value
-        if depほじth >= 1:
+        if depth >= 1:
             # for each step/deep
             for level in range(depth+1):
                 # create the folder 0
