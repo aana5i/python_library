@@ -44,9 +44,6 @@ class HierarchyInitializer:
         # get root path
         path = os.getcwd()
 
-        # count the number of folder who need to be created
-        print(f'number of folder to create: {self.folder_counter()}')
-
         # for each step/deep
         for level in range(self.depth+1):
             # print('\n1:', 'current Level: ', level)
@@ -68,11 +65,9 @@ class HierarchyInitializer:
                     if len(subfolder.split('\\')) == level:
                         # for each past level
                         for current_level in range(level+1):
-                            print(current_level)
                             # print('subfolders: ', subfolder, 'len(subfolders.split())', len(subfolder.split('\\')), 'folder', l)
                             tmp_path = os.path.join(path, subfolder)  # concatenate root path and subfolder
                             level_path = os.path.join(tmp_path, str(current_level))  # # then with new folder
-                            print(level_path)
                             # print('path1: ', tmp_path)
                             # create folder if not exist
                             self.create_folder(str(level_path))
@@ -84,3 +79,6 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     hi = HierarchyInitializer(args.depth)
+
+    # count the number of folder who need to be created
+    print(f'{hi.folder_counter()} folder created')
