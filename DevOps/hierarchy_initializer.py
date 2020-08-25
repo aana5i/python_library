@@ -5,9 +5,27 @@ import argparse
 class HierarchyInitializer:
     def __init__(self, depth):
         self.depth = depth
+        self.hierarchy_initializer()
+
+    @staticmethod
+    def create_folder(path):
+        """
+        create folder from path if not exist
+        :param path:
+        :return:
+        """
+        if not os.path.exists(path):
+            os.makedirs(path)
+            # create folders and files
+            f = open(f'{path}/path.txt', 'a')
+            f.write(os.path.relpath(path))
+            f.close()
 
     def folder_counter(self):
-        # count the number of folder who need to be created
+        """
+        count the number of folder to create
+        :return:
+        """
         counter = 1
         result = []
         for num in range(self.depth+1):
@@ -19,6 +37,11 @@ class HierarchyInitializer:
         return sum(result)
 
     def hierarchy_initializer(self):
+        """
+        Create a folder/file hierarchy
+        :param depth: int
+        :return:
+        """
         # get root path
         path = os.getcwd()
 
@@ -35,43 +58,28 @@ class HierarchyInitializer:
                 level_0_path = os.path.join(path, str(level))
                 # print('1.5:', 'path0:', level_0_path)
                 # create folder if not exist
-                if not os.path.exists(level_0_path):
-                    os.makedirs(level_0_path)
-                    f = open(f'{level_0_path}/path.txt', 'a')
-                    f.write(os.path.relpath(str(level_0_path)))
-                    f.close()
+                self.create_folder(str(level_0_path))
+
             else:
                 # print('2:', 'else')
-                # find all subfolders
-                subfolders = []
-                for levels in range(level):
-                    subfolders.extend([x[0] for x in os.walk(str(levels))])
-                # print('3:', subfolders, level, subfolders[0])
-
-                # find the current level subfolders
-                for subfolder in subfolders[level-1:]:
+                # find the past level subfolder
+                for subfolder in [x[0] for x in os.walk(str(0))]:
                     # print('4:', 'sub loop')
                     # for each past level
-                    for l in range(level+1):
+                    for current_level in range(level+1):
                         # print('subfolders: ', subfolder, 'len(subfolders.split())', len(subfolder.split('\\')), 'folder', l)
                         # take only the subfolder of this level
                         if len(subfolder.split('\\')) == level:
-                            tt_path = os.path.join(path, subfolder)  # concatenate root path and subfolder
-                            tmp_path = os.path.join(tt_path, str(l))  # concatenate tmp path new folder
+                            tmp_path = os.path.join(path, subfolder)  # concatenate root path and subfolder
+                            level_path = os.path.join(tmp_path, str(current_level))  # # then with new folder
                             # print('path1: ', tmp_path)
                             # create folder if not exist
-                            if not os.path.exists(tmp_path):
-                                os.makedirs(tmp_path)
-                                # create folders and files
-                                f = open(f'{tmp_path}/path.txt', 'a')
-                                f.write(os.path.relpath(str(tmp_path)))
-                                f.close()
+                            self.create_folder(str(level_path))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Hierarchy initializer.')
-    parser.add_argument('--depth', '-d', type=int, help='Depth number')
+    parser.add_argument('--depth', '-d', type=int, help='Depth number', required=True)
 
     args = parser.parse_args()
     hi = HierarchyInitializer(args.depth)
-    hi.hierarchy_initializer()
