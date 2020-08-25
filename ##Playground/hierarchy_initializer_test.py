@@ -37,17 +37,15 @@ def hierarchy_initializer(depth):
             # フォルダー・ファイルを作成する // create folder/file
             create_folder(str(level_0_path))
         else:
-            # サブフォルダを取得 (しゅとく) // loop on subfolder  **
-            for subfolder in [x[0] for x in os.walk(str(0))]:
-                # only get the current level subfolder **
-                if len(subfolder.split('\\')) == level:
-                    # for each folder in this level **
-                    for current_level in range(level+1):
-                        # パスを取得 (しゅとく) // build path
-                        tmp_path = os.path.join(path, subfolder)
-                        level_path = os.path.join(tmp_path, str(current_level))
-                        # フォルダー・ファイルを作成する // create folder/file
-                        create_folder(str(level_path))
+            # サブフォルダを取得 (しゅとく) // loop on subfolder  **  only get the current level subfolder
+            for subfolder in [x[0] for x in os.walk(str(0)) if len(x[0].split('\\')) == level]:
+                # for each folder in this level **
+                for current_level in range(level+1):
+                    # パスを取得 (しゅとく) // build path
+                    tmp_path = os.path.join(path, subfolder)
+                    level_path = os.path.join(tmp_path, str(current_level))
+                    # フォルダー・ファイルを作成する // create folder/file
+                    create_folder(str(level_path))
 
 
 hierarchy_initializer(5)

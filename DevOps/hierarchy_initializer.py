@@ -58,19 +58,17 @@ class HierarchyInitializer:
 
             else:
                 # print('2:', 'else')
-                # find the past level subfolder
-                for subfolder in [x[0] for x in os.walk(str(0))]:
+                # find the past level subfolder, take only the subfolder of this level
+                for subfolder in [x[0] for x in os.walk(str(0)) if len(x[0].split('\\')) == level]:
                     # print('4:', 'sub loop')
-                    # take only the subfolder of this level
-                    if len(subfolder.split('\\')) == level:
-                        # for each past level
-                        for current_level in range(level+1):
-                            # print('subfolders: ', subfolder, 'len(subfolders.split())', len(subfolder.split('\\')), 'folder', l)
-                            tmp_path = os.path.join(path, subfolder)  # concatenate root path and subfolder
-                            level_path = os.path.join(tmp_path, str(current_level))  # # then with new folder
-                            # print('path1: ', tmp_path)
-                            # create folder if not exist
-                            self.create_folder(str(level_path))
+                    # for each past level
+                    for current_level in range(level+1):
+                        # print('subfolders: ', subfolder, 'len(subfolders.split())', len(subfolder.split('\\')), 'folder', l)
+                        tmp_path = os.path.join(path, subfolder)  # concatenate root path and subfolder
+                        level_path = os.path.join(tmp_path, str(current_level))  # # then with new folder
+                        # print('path1: ', tmp_path)
+                        # create folder if not exist
+                        self.create_folder(str(level_path))
 
 
 if __name__ == '__main__':
