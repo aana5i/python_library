@@ -39,7 +39,6 @@ class HierarchyInitializer:
     def hierarchy_initializer(self):
         """
         Create a folder/file hierarchy
-        :param depth: int
         :return:
         """
         # get root path
@@ -65,13 +64,15 @@ class HierarchyInitializer:
                 # find the past level subfolder
                 for subfolder in [x[0] for x in os.walk(str(0))]:
                     # print('4:', 'sub loop')
-                    # for each past level
-                    for current_level in range(level+1):
-                        # print('subfolders: ', subfolder, 'len(subfolders.split())', len(subfolder.split('\\')), 'folder', l)
-                        # take only the subfolder of this level
-                        if len(subfolder.split('\\')) == level:
+                    # take only the subfolder of this level
+                    if len(subfolder.split('\\')) == level:
+                        # for each past level
+                        for current_level in range(level+1):
+                            print(current_level)
+                            # print('subfolders: ', subfolder, 'len(subfolders.split())', len(subfolder.split('\\')), 'folder', l)
                             tmp_path = os.path.join(path, subfolder)  # concatenate root path and subfolder
                             level_path = os.path.join(tmp_path, str(current_level))  # # then with new folder
+                            print(level_path)
                             # print('path1: ', tmp_path)
                             # create folder if not exist
                             self.create_folder(str(level_path))
