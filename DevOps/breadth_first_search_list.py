@@ -57,13 +57,13 @@ class HierarchyInitializer:
                 # set path for folder 0 only
                 level_0_path = os.path.join(path, str(level))
                 # create folder if not exist, save the current level path in the path list
-                _path = self.create_folder(str(level_0_path))
+                _path = [self.create_folder(str(level_0_path))]
 
             else:
                 # create a temporary to save all the current level paths
                 _tmp_path = []
                 # find the past level subfolder, take only the subfolder of this level
-                for subfolder in [x[0] for x in os.walk(str(0)) if len(x[0].split('\\')) == level]:
+                for subfolder in _path:
                     # for each past level
                     for current_level in range(level+1):
                         tmp_path = os.path.join(path, subfolder)  # concatenate root path and subfolder
