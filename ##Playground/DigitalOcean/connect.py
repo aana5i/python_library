@@ -11,8 +11,8 @@ def boto_version():
     client = session.client('s3',
                             region_name='sfo2',
                             endpoint_url='https://sfo2.digitaloceanspaces.com/',
-                            aws_access_key_id='ASTYZ2ETKHIUWXQ2NT6L',
-                            aws_secret_access_key='PRNn5Am8sTfcVyWNmgcEonc5+bATq7UIcqHhkd3qkh0')
+                            aws_access_key_id='key',
+                            aws_secret_access_key='pkey')
     #  %(bucket)s.sfo2.digitaloceanspaces.com
 
     # List all buckets on your account.
