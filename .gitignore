@@ -2,3 +2,6 @@ __pycache__/**
 venv-mt/**
 **/**/__pycache__/**
 **/__pycache__/**
+**/**/**/venv-mt/**
+**/**/venv-mt/**
+**/venv-mt/**
