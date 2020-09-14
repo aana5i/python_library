@@ -44,10 +44,10 @@ class HierarchyInitializer:
         :return:
         """
         # get root path
-        path = os.getcwd()
+        root_path = os.getcwd()
 
         # create the past level path list
-        _path = []
+        past_level_path = []
 
         # for each step/deep
         for level in range(self.depth+1):
@@ -55,23 +55,25 @@ class HierarchyInitializer:
             # create the folder 0
             if level == 0:
                 # set path for folder 0 only
-                level_0_path = os.path.join(path, str(level))
+                level_0_path = os.path.join(root_path, str(level))
                 # create folder if not exist, save the current level path in the path list
-                _path = [self.create_folder(str(level_0_path))]
+                past_level_path = [self.create_folder(str(level_0_path))]
 
             else:
                 # create a temporary to save all the current level paths
-                _tmp_path = []
+                current_level_path = []
                 # find the past level subfolder, take only the subfolder of this level
-                for subfolder in _path:
+                for subfolder in past_level_path:
+                    # concatenate root path and subfolder
+                    current_subfolder_path = os.path.join(root_path, subfolder)
                     # for each past level
                     for current_level in range(level+1):
-                        tmp_path = os.path.join(path, subfolder)  # concatenate root path and subfolder
-                        level_path = os.path.join(tmp_path, str(current_level))  # # then with new folder
+                        # concatenate subfolder and current level new folder
+                        level_path = os.path.join(current_subfolder_path, str(current_level))
                         # create folder if not exist, save the current level path
-                        _tmp_path.append(self.create_folder(str(level_path)))
+                        current_level_path.append(self.create_folder(str(level_path)))
                 # create a new path list the last level path
-                _path = _tmp_path
+                past_level_path = current_level_path
 
 
 if __name__ == '__main__':
