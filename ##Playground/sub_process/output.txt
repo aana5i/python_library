@@ -1,0 +1,14 @@
+ Le volume dans le lecteur I sÅfappelle Starfall
+ Le numero de serie du volume est 98E4-54A2
+
+ Repertoire de I:\##LibraryPython\##Playground\sub_process
+
+18/09/2020  09:31    <DIR>          .
+18/09/2020  09:31    <DIR>          ..
+18/09/2020  09:31                 0 output.txt
+18/09/2020  09:31               971 sub_process.py
+               2 fichier(s)              971 octets
+
+     Total des fichiers listes?:
+               2 fichier(s)              971 octets
+               2 Rep(s)  1?290?540?306?432 octets libres
