@@ -1,6 +1,8 @@
 # subprocess => run command
 import subprocess
 import time
+import os
+import signal
 
 
 # shell=True is not secured
@@ -28,9 +30,7 @@ with open('output.txt', 'w') as f:
     subprocess.run(["cmd", "/c", "dir", "/s"], stdout=f, text=True)
 
 
-proc = subprocess.Popen(["calc.exe"], stdout=subprocess.PIPE)
-out = proc.communicate()[0]
-pid = proc.pid
-print(pid)
-time.sleep(2.0)
-proc.kill()
+proc = subprocess.check_output(['calc.exe'], shell=True)
+
+time.sleep(5)
+os.terminate()
