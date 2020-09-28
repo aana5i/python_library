@@ -33,11 +33,7 @@ page = []
 
 
 
-# f = open("G:\\Pixelmatic\\svn\\terraform-ansible\\5\Ops\\Fleet\\live-region\\modules\\region-dynamic\\main.tf", "r")
-f = open("I:\\##LibraryPython\\automatisation\\Ops_5_export\\Fleet\\live-region\\modules\\region-dynamic\\main.tf", "r")
-
-f = open("D:\\pxmt\\Ops_5_export\\Fleet\\live-region\\modules\\region-dynamic\\main.tf", "r")
-
+##TODO import from config
 for line in f:
     page.append(line.strip())
 
