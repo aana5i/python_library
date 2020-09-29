@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package address;
+
+message Building {
+    string building_name = 1;
+    int32 building_number = 2;
+
+    message Street {
+        string name = 1;
+
+        message City {
+            string name = 1;
+            string zip_code = 2;
+            string country = 3;
+        }
+
+        City city = 2;
+    }
+
+    Street street = 3;
+}
+
+
+// OR
+/*
+message City {
+    string name = 1;
+    string zip_code = 2;
+    string country = 3;
+}
+
+message Street {
+    string name = 1;
+    City city = 2;
+}
+
+message Building {
+    string building_name = 1;
+    int32 building_number = 2;
+    Street street = 3;
+}
+*/

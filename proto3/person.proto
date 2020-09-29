@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+import "date.proto";
+
+package person;
+
+message Person {
+    int32 age = 1;
+    string first_name = 2;
+    string last_name = 3;
+    bytes small_picture = 4;
+    bool is_verified = 5;
+    float height = 6;
+
+    // list
+    repeated string phone_numbers = 7;
+
+    // define dictionary
+    enum EyeColour {
+        UNKNOWN_EYE_COLOr = 0;
+        EYE_GREEN = 1;
+        EYE_BROWN = 2;
+        EYE_BLUE = 3;
+    }
+    // declare dictionary
+    EyeColour eye_colour = 8;
+
+    // add birthday using created Date
+    date.Date birthday = 9;
+
+    // define the type address
+    message Address {
+        string address_line_1 = 1;
+        string address_line_2 = 2;
+        string zip_code = 3;
+        string city = 4;
+        string country = 5;
+    }
+    // add one or more addresses for the person
+    repeated Address addresses = 10;
+}
