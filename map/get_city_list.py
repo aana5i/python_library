@@ -21,7 +21,7 @@ def to_text(path, data, mode='a', encoding='utf-8'):
 bu = Builder()
 
 
-for i in range(1, 700):
+for i in range(1, 701):
     url = f'http://www.journaldunet.com/management/ville/index/villes?page={i}'
 
     soup = bu.get_data(url)
