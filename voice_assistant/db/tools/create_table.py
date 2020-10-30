@@ -9,13 +9,14 @@ class DbBuilder:
     def __init__(self, db):
         # self.sql_db = DB('../database.db')
         self.sql_db = db
+        self.create_base_tables()
 
     def create_base_tables(self):
         """
         Set the base tables sql syntax
         :return:
         """
-        PATH = '../base_tables'
+        PATH = 'db/base_tables'
         f = []
         for (dirpath, dirnames, filenames) in os.walk(PATH):
             f.extend(filenames)
@@ -64,7 +65,7 @@ class DbBuilder:
                 sql += f' {condition[0]} = '
                 sql += f'{condition[1]}' if isinstance(condition[1], int) else f'"{condition[1]}"'
         sql += ';'
-        print(sql)
+
         return self.sql_db.task_select(sql)[0]
 
     def insert_in_db(self, table_name, arg):
@@ -92,8 +93,12 @@ class DbBuilder:
                 sql += ', '
 
         sql += ');'
-        print(sql)
-        check_select = self.select_in_db(table_name, col, arg.items())
+
+        check_select = []
+        if table_name != 'trains':
+            check_select = self.select_in_db(table_name, col, arg.items())
+            if table_name == 'lines':
+                print(check_select)
         if not check_select:
             return self.sql_db.task_insert(sql)
         return check_select[0][0]

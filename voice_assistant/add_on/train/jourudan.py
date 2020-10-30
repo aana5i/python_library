@@ -25,9 +25,13 @@ class Jourudan:
             'その他': 'その他',
             '運転再開': '運転再開'
         }
-        for page_number in range(0, 600, 30):  # 581
-            list_page_soup = WebCrawler(self.url + str(page_number)).get_soup()
+
+        for page_number in range(0, 900, 30):  # 581
+            print(self.url + str(page_number))
+            list_page = WebCrawler(self.url + str(page_number))
+            list_page_soup = list_page.get_soup()
             tables = list_page_soup.find_all('div', {'class': 'div_table'})
+
             for table in tables:
                 spans = table.find_all('span')
                 train = {}
@@ -42,7 +46,14 @@ class Jourudan:
 
                     elif span_counter == 1:
                         train['start_time'] = span.split(' ')[0]
-                        train['start_station'], train['end_station'] = re.findall(r'(\S+) → (\S+)', span)[0]
+
+                        tmp = re.findall(r'(\S+) → (\S+)', span)
+
+                        if not tmp:
+                            tmp = [(re.findall(r'(\S+) →', span)[0], '')]
+                            print(tmp)
+
+                        train['start_station'], train['end_station'] = tmp[0]
 
                     elif span_counter == 2:
                         train['status'] = span
@@ -64,15 +75,18 @@ class Jourudan:
                         for tr in trs:
                             tds = tr.find_all('td')
                             train[english_trad[tds[0].getText()]] = tds[1].getText().strip()
+
                 self.page_soup.append(train)
-            break
+            if page_number >= 60:
+                break
 
     def get_line_infos(self):
         return self.page_soup
 
 
-J = Jourudan()
-J.routine()
+if __name__ == '__main__':
+    J = Jourudan()
+    J.routine()
 
 """
 USAGE
