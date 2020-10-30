@@ -24,7 +24,7 @@ class WebCrawler:
             # end = quote('/'.join(tmp_url[1:]))  # quote the rest
             # self.url = begin + '/' + end  # reform url
             self.url = self.the_kanji_problem()
-            print(self.url, url)
+
             self.response = urlopen(self.url).read()
 
         self.soup = BeautifulSoup(self.response.decode(decoder), parser)

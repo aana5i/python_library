@@ -23,12 +23,11 @@ class ServiceChooser:
 
         train = SqlOrder(json)
         result = train.insert_all_train_infos()
-        counter_ = 0
         for train in result:
             for table_name, arg in result[train].items():
                 if table_name == 'lines':
                     line_id = db.insert_in_db(table_name, arg)
-                    counter_ += 1
+
                 elif table_name == 'Start_end_stations':
                     arg['line_id'] = line_id
                     station_id = db.insert_in_db(table_name, arg)
@@ -38,7 +37,6 @@ class ServiceChooser:
                     arg['start_end_station_id'] = station_id
                     arg['now_time'] = datetime.datetime.now(pytz.timezone('Asia/Tokyo')).strftime("%Y-%m-%d %H:%M:%S")
                     trains_id = db.insert_in_db(table_name, arg)
-        print(counter_)
 
 
 if __name__ == '__main__':

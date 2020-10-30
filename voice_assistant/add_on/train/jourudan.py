@@ -27,7 +27,6 @@ class Jourudan:
         }
 
         for page_number in range(0, 900, 30):  # 581
-            print(self.url + str(page_number))
             list_page = WebCrawler(self.url + str(page_number))
             list_page_soup = list_page.get_soup()
             tables = list_page_soup.find_all('div', {'class': 'div_table'})
@@ -51,7 +50,6 @@ class Jourudan:
 
                         if not tmp:
                             tmp = [(re.findall(r'(\S+) →', span)[0], '')]
-                            print(tmp)
 
                         train['start_station'], train['end_station'] = tmp[0]
 
@@ -77,8 +75,6 @@ class Jourudan:
                             train[english_trad[tds[0].getText()]] = tds[1].getText().strip()
 
                 self.page_soup.append(train)
-            if page_number >= 60:
-                break
 
     def get_line_infos(self):
         return self.page_soup

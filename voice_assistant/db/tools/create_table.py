@@ -52,7 +52,7 @@ class DbBuilder:
         # constuire les relations entre les tables
         self.sql_db.create_table(sql)
 
-    def select_in_db(self, table_name, column, conditions=[]):
+    def select_in_db(self, table_name, column, conditions=None):
         sql = f'SELECT id, '
         for counter, arg in enumerate(column):
             sql += arg
@@ -94,11 +94,9 @@ class DbBuilder:
 
         sql += ');'
 
-        check_select = []
-        if table_name != 'trains':
-            check_select = self.select_in_db(table_name, col, arg.items())
-            if table_name == 'lines':
-                print(check_select)
+        # check_select = []
+        # if table_name != 'trains':
+        check_select = self.select_in_db(table_name, col, arg.items())
         if not check_select:
             return self.sql_db.task_insert(sql)
         return check_select[0][0]
