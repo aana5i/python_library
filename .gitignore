@@ -1,6 +1,7 @@
 __pycache__/**
 venv-mt/**
 **/**/__pycache__/**
+**/**/**/__pycache__/**
 **/__pycache__/**
 **/**/**/venv-mt/**
 **/**/venv-mt/**
@@ -9,3 +10,5 @@ venv-mt/**
 **/**/config/**
 **/config/**
 config/**
+.idea/**
+**/.idea/**

@@ -1,0 +1,341 @@
+{
+    "delayText": [
+        {
+            "display": 60,
+            "from": 60
+        },
+        {
+            "display": 0,
+            "to": 0
+        }
+    ],
+    "lines": {
+        "ako": {
+            "dest": {
+                "lower": "播州赤穂",
+                "upper": "相生"
+            },
+            "index": 4,
+            "name": "赤穂線",
+            "pos": "/api/v3/ako.json",
+            "range": "相生〜播州赤穂",
+            "st": "/api/v3/ako_st.json"
+        },
+        "bantan": {
+            "dest": {
+                "lower": "和田山",
+                "upper": "姫路"
+            },
+            "index": 16,
+            "name": "播但線",
+            "pos": "/api/v3/bantan.json",
+            "range": "姫路～和田山",
+            "st": "/api/v3/bantan_st.json"
+        },
+        "fukuchiyama": {
+            "dest": {
+                "lower": "福知山",
+                "upper": "新三田"
+            },
+            "index": 13,
+            "name": "JR宝塚線・福知山線",
+            "pos": "/api/v3/fukuchiyama.json",
+            "range": "新三田～福知山",
+            "st": "/api/v3/fukuchiyama_st.json"
+        },
+        "gakkentoshi": {
+            "dest": {
+                "lower": "京橋",
+                "upper": "木津"
+            },
+            "index": 15,
+            "name": "学研都市線",
+            "pos": "/api/v3/gakkentoshi.json",
+            "range": "木津〜京橋",
+            "relatelines": [
+                "/api/v3/gakkentoshiyamatoji.json"
+            ],
+            "st": "/api/v3/gakkentoshi_st.json"
+        },
+        "hanwahagoromo": {
+            "dest": {
+                "lower": "和歌山",
+                "upper": "天王寺"
+            },
+            "index": 21,
+            "name": "阪和線・羽衣線",
+            "pos": "/api/v3/hanwahagoromo.json",
+            "range": "天王寺〜和歌山・鳳〜東羽衣",
+            "relatelines": [
+                "/api/v3/hanwahagoromoosakaloop.json"
+            ],
+            "st": "/api/v3/hanwahagoromo_st.json"
+        },
+        "hokurikubiwako": {
+            "dest": {
+                "lower": "京都",
+                "upper": "長浜・近江塩津"
+            },
+            "index": 1,
+            "name": "北陸線・琵琶湖線",
+            "pos": "/api/v3/hokurikubiwako.json",
+            "range": "近江塩津〜長浜・長浜〜京都",
+            "st": "/api/v3/hokurikubiwako_st.json"
+        },
+        "kansai": {
+            "dest": {
+                "lower": "亀山",
+                "upper": "加茂"
+            },
+            "index": 26,
+            "name": "関西線",
+            "pos": "/api/v3/kansai.json",
+            "range": "加茂～亀山",
+            "st": "/api/v3/kansai_st.json"
+        },
+        "kansaiairport": {
+            "dest": {
+                "lower": "関西空港",
+                "upper": "日根野"
+            },
+            "index": 22,
+            "name": "関西空港線",
+            "pos": "/api/v3/kansaiairport.json",
+            "range": "日根野〜関西空港",
+            "st": "/api/v3/kansaiairport_st.json"
+        },
+        "kinokuni": {
+            "dest": {
+                "lower": "新宮",
+                "upper": "和歌山"
+            },
+            "index": 27,
+            "name": "きのくに線",
+            "pos": "/api/v3/kinokuni.json",
+            "range": "和歌山～新宮",
+            "st": "/api/v3/kinokuni_st.json"
+        },
+        "kobesanyo": {
+            "dest": {
+                "lower": "姫路・上郡",
+                "upper": "大阪"
+            },
+            "index": 3,
+            "name": "JR神戸線・山陽線",
+            "pos": "/api/v3/kobesanyo.json",
+            "range": "大阪〜姫路・姫路〜上郡",
+            "st": "/api/v3/kobesanyo_st.json"
+        },
+        "kosei": {
+            "dest": {
+                "lower": "京都",
+                "upper": "近江塩津"
+            },
+            "index": 5,
+            "name": "湖西線",
+            "pos": "/api/v3/kosei.json",
+            "range": "近江塩津〜京都",
+            "relatelines": [
+                "/api/v3/koseihokurikubiwako.json"
+            ],
+            "st": "/api/v3/kosei_st.json"
+        },
+        "kusatsu": {
+            "dest": {
+                "lower": "柘植",
+                "upper": "草津"
+            },
+            "index": 6,
+            "name": "草津線",
+            "pos": "/api/v3/kusatsu.json",
+            "range": "草津～柘植",
+            "st": "/api/v3/kusatsu_st.json"
+        },
+        "kyoto": {
+            "dest": {
+                "lower": "大阪",
+                "upper": "京都"
+            },
+            "index": 2,
+            "name": "JR京都線",
+            "pos": "/api/v3/kyoto.json",
+            "range": "京都〜大阪",
+            "st": "/api/v3/kyoto_st.json"
+        },
+        "maizuru": {
+            "dest": {
+                "lower": "東舞鶴",
+                "upper": "綾部"
+            },
+            "index": 17,
+            "name": "舞鶴線",
+            "pos": "/api/v3/maizuru.json",
+            "range": "綾部～東舞鶴",
+            "st": "/api/v3/maizuru_st.json"
+        },
+        "manyomahoroba": {
+            "dest": {
+                "lower": "高田",
+                "upper": "奈良"
+            },
+            "index": 25,
+            "name": "万葉まほろば線",
+            "pos": "/api/v3/manyomahoroba.json",
+            "range": "奈良〜高田",
+            "st": "/api/v3/manyomahoroba_st.json"
+        },
+        "nara": {
+            "dest": {
+                "lower": "木津",
+                "upper": "京都"
+            },
+            "index": 7,
+            "name": "奈良線",
+            "pos": "/api/v3/nara.json",
+            "range": "京都〜木津",
+            "st": "/api/v3/nara_st.json"
+        },
+        "osakahigashi": {
+            "dest": {
+                "lower": "久宝寺",
+                "upper": "新大阪"
+            },
+            "index": 11,
+            "name": "おおさか東線",
+            "pos": "/api/v3/osakahigashi.json",
+            "range": "新大阪〜久宝寺",
+            "relatelines": [
+                "/api/v3/osakahigashigakkentoshi.json",
+                "/api/v3/osakahigashiyamatoji.json",
+                "/api/v3/osakahigashikyoto.json"
+            ],
+            "st": "/api/v3/osakahigashi_st.json"
+        },
+        "osakaloop": {
+            "dest": {
+                "lower": "天王寺",
+                "upper": "大阪"
+            },
+            "index": 18,
+            "name": "大阪環状線",
+            "pos": "/api/v3/osakaloop.json",
+            "range": "大阪〜天王寺〜大阪",
+            "st": "/api/v3/osakaloop_st.json"
+        },
+        "sagano": {
+            "dest": {
+                "lower": "園部",
+                "upper": "京都"
+            },
+            "index": 8,
+            "name": "嵯峨野線",
+            "pos": "/api/v3/sagano.json",
+            "range": "京都～園部",
+            "st": "/api/v3/sagano_st.json"
+        },
+        "sanin1": {
+            "dest": {
+                "lower": "福知山",
+                "upper": "園部"
+            },
+            "index": 9,
+            "name": "山陰線",
+            "pos": "/api/v3/sanin1.json",
+            "range": "園部～福知山",
+            "st": "/api/v3/sanin1_st.json"
+        },
+        "sanin2": {
+            "dest": {
+                "lower": "浜坂",
+                "upper": "福知山"
+            },
+            "index": 10,
+            "name": "山陰線",
+            "pos": "/api/v3/sanin2.json",
+            "range": "福知山～居組",
+            "st": "/api/v3/sanin2_st.json"
+        },
+        "takarazuka": {
+            "dest": {
+                "lower": "新三田",
+                "upper": "大阪"
+            },
+            "index": 12,
+            "name": "JR宝塚線",
+            "pos": "/api/v3/takarazuka.json",
+            "range": "大阪〜新三田",
+            "relatelines": [
+                "/api/v3/takarazukakobe.json"
+            ],
+            "st": "/api/v3/takarazuka_st.json"
+        },
+        "tozai": {
+            "dest": {
+                "lower": "尼崎",
+                "upper": "京橋"
+            },
+            "index": 14,
+            "name": "JR東西線",
+            "pos": "/api/v3/tozai.json",
+            "range": "京橋〜尼崎",
+            "relatelines": [
+                "/api/v3/tozaikobe.json"
+            ],
+            "st": "/api/v3/tozai_st.json"
+        },
+        "wakayama1": {
+            "dest": {
+                "lower": "和歌山",
+                "upper": "五条"
+            },
+            "index": 24,
+            "name": "和歌山線",
+            "pos": "/api/v3/wakayama1.json",
+            "range": "五条～和歌山",
+            "st": "/api/v3/wakayama1_st.json"
+        },
+        "wakayama2": {
+            "dest": {
+                "lower": "五条",
+                "upper": "王寺"
+            },
+            "index": 23,
+            "name": "和歌山線",
+            "pos": "/api/v3/wakayama2.json",
+            "range": "王寺〜五条",
+            "st": "/api/v3/wakayama2_st.json"
+        },
+        "yamatoji": {
+            "dest": {
+                "lower": "加茂",
+                "upper": "JR難波"
+            },
+            "index": 20,
+            "name": "大和路線",
+            "pos": "/api/v3/yamatoji.json",
+            "range": "JR難波〜加茂",
+            "relatelines": [
+                "/api/v3/yamatojiosakahigashi.json"
+            ],
+            "st": "/api/v3/yamatoji_st.json"
+        },
+        "yumesaki": {
+            "dest": {
+                "lower": "桜島",
+                "upper": "西九条"
+            },
+            "index": 19,
+            "name": "JRゆめ咲線",
+            "pos": "/api/v3/yumesaki.json",
+            "range": "西九条〜桜島",
+            "st": "/api/v3/yumesaki_st.json"
+        }
+    },
+    "noUpdateAlert": {
+        "currentTime": "/api/v3/currenttime.txt",
+        "thresholdMinutes": 1
+    },
+    "trafficInfo": {
+        "url": "/api/v3/area_kinki_trafficinfo.json"
+    }
+}

@@ -1,0 +1,5 @@
+{
+  "lines": ["id integer PRIMARY KEY", "line_name text NOT NULL"],
+  "Start_end_stations": ["id integer PRIMARY KEY", "line_id integer NOT NULL", "start_station text NOT NULL", "end_station text NOT NULL"],
+  "trains":  ["id integer PRIMARY KEY", "line_id integer NOT NULL", "start_end_station_id integer NOT NULL", "delay text NOT NULL", "detail text NOT NULL", "status text NOT NULL", "start_time text NOT NULL", "now_time text NOT NULL"]
+}
