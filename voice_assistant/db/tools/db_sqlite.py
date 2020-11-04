@@ -8,6 +8,11 @@ class DB:
         self.get_connection(db)
 
     def create_connection(self, db_file):
+        """
+        create or connect to the DB
+        :param db_file: str
+        :return:
+        """
         """ create a database connection to a SQLite database """
         self.con = None
         try:
@@ -16,12 +21,17 @@ class DB:
             print(e)
 
     def get_connection(self, db):
+        """
+        un-used
+        :param db: str
+        :return:
+        """
         self.create_connection(db)
 
     def create_table(self, create_table_sql):
         """
         create table
-        :param create_table_sql:
+        :param create_table_sql: str SQL
         """
         c = self.con.cursor()
         c.execute(create_table_sql)
@@ -66,3 +76,55 @@ class DB:
 
     def close_db(self):
         self.con.close()
+
+
+"""
+USAGE 
+
+database = DB('../database.db')
+
+CREATE TABLE:
+create_table_sql = 
+    "CREATE TABLE IF NOT EXIST groups (
+        group_id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL
+    );"
+database.create_table(create_table_sql)
+create_table_sql = 
+    "CREATE TABLE IF NOT EXIST groups (
+        group_id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL
+    );"
+database.create_table(create_table_sql)
+create_table_sql = 
+    "CREATE TABLE IF NOT EXIST groups (
+        group_id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL
+    );"
+database.create_table(create_table_sql)
+create_table_sql = 
+    "CREATE TABLE IF NOT EXIST groups (
+        group_id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL
+    );"
+database.create_table(create_table_sql)
+
+SELECT:
+select = "SELECT column_list FROM table;"
+database.task_select(select)
+
+INSERT:
+insert = "INSERT INTO table (column1,column2 ,..) VALUES (value1, value2 , ...);"
+database.task_insert(insert)
+
+UPDATE:
+task = 
+    "UPDATE table
+    SET column_1 = new_value_1,
+        column_2 = new_value_2
+    WHERE
+        search_condition 
+    ORDER column_or_expression
+    LIMIT row_count OFFSET offset;"
+database.task_update(task)
+"""

@@ -45,3 +45,4 @@ url = 'https://www.tetsudo.com/traffic/category/新幹線/'
 line = '山陽新幹線'
 # bu.get_train_line_data(url, line)
 bu.get_regions_lines()
+# TODO delete!!

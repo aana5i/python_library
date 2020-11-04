@@ -5,10 +5,13 @@ from tools.importer_saver import from_json
 from db.tools.db_sqlite import DB
 
 
+# TODO deplace in populate_db
+#TODO create a env config for path ( db ect .. )
 class DbBuilder:
     def __init__(self, db):
         # self.sql_db = DB('../database.db')
         self.sql_db = db
+        ''' Populate base table '''
         self.create_base_tables()
 
     def create_base_tables(self):
@@ -30,12 +33,12 @@ class DbBuilder:
     def set_table(self, args):
         """
         create the sql order to create table
-        :param table_name:
         :param args:
         :return:
         """
         for table_name, args in args.items():
             sql = f'CREATE TABLE IF NOT EXISTS {table_name} ('
+            # TODO write a function to do this  4 rows
             for counter, arg in enumerate(args):
                 sql += arg
                 if counter < len(args) - 1:
@@ -96,6 +99,7 @@ class DbBuilder:
 
         # check_select = []
         # if table_name != 'trains':
+        # TODO if the trains are the same, ( no new news ) don't enter it again
         check_select = self.select_in_db(table_name, col, arg.items())
         if not check_select:
             return self.sql_db.task_insert(sql)
@@ -107,8 +111,6 @@ if __name__ == '__main__':
     database = DB('../database.db')
     db = DbBuilder(database)
 
-    ''' Populate base table '''
-    db.create_base_tables()
 
 """
 USAGE
