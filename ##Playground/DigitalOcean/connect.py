@@ -1,8 +1,6 @@
 import boto3
 
 import os
-from pprint import pprint
-from botocore.client import Config
 
 
 def boto_version():

@@ -28,7 +28,7 @@ class WebCrawler:
     def the_kanji_problem(self):
         url_to_test = [char for char in self.url]
         result = ''
-        for counter, letter in enumerate(url_to_test):
+        for letter in url_to_test:
             if len(letter.encode('utf-8')) > 1:
                 letter = quote(letter)
             result += letter

@@ -8,7 +8,6 @@ import sys
 
 CHUNK_SIZE = 4096
 
-
 def md5(fname):
     """
     md5 hash
@@ -23,7 +22,6 @@ def md5(fname):
     else:
         hash_md5.update(fname)
     return hash_md5.hexdigest()
-
 
 class Merkle:
     def __init__(self, root_directory):
@@ -54,7 +52,8 @@ class Merkle:
 
         # error check: file exist
         if os.path.isfile(path):
-            return MerkleNode(md5(path), path)
+            size = os.path.getsize(path)
+            return MerkleNode(md5(path), path, size=size)
         
         # Path is a directory
         children = []
@@ -64,15 +63,18 @@ class Merkle:
             child_node = self.create_merkle_node(os.path.join(path, file_name))
             hash_str += child_node.hash
             children.append(child_node)
+
         # return MerkleNode(hashlib.md5(hash_str.encode('utf-8')).hexdigest(), path, children)
         return MerkleNode(md5(hash_str.encode('utf-8')), path, children)
 
 
 class MerkleNode:
-    def __init__(self, hash_code, path, children=None):
+    def __init__(self, hash_code, path, children=None, size=None):
         self.hash = hash_code
         self.path = path
         self.children = children
+        if size:
+            self.size = size
 
 
 class MerkleNodeEncoder(json.JSONEncoder):
@@ -87,8 +89,6 @@ class MerkleNodeEncoder(json.JSONEncoder):
         else:
             return json.JSONEncoder.default(self, obj)
 
-
-# TODO save the JSON
 def hashTreeForPath(path):
     """
     Launch the Hash process, dump the result in Json
@@ -98,9 +98,31 @@ def hashTreeForPath(path):
     merkle = Merkle(path)
     return json.dumps(merkle.root, cls=MerkleNodeEncoder, indent=2)
 
+def saveHashTree(path):
+    """
+    Launch the Hash process, write the result in Json file
+    :param path: str,
+    :return:
+    """
+    _json = hashTreeForPath(path)
+
+    json_path = str(path) + '/merkleTreeHash.json'
+    text_path = str(path) + '/merkleRootTreeHash.txt'
+
+    json_data = json.loads(_json)
+
+    with open(json_path, 'w') as outfile:
+        json.dump(json_data, outfile, indent=2)
+
+    with open(text_path, 'w') as outfile:
+        outfile.writelines(json_data['hash'])
+        outfile.close()
 
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
         print('Usage: HashTree.py <path>')
     else:
-        print(hashTreeForPath(sys.argv[1]))
+        if len(sys.argv) == 2:
+            print(hashTreeForPath(sys.argv[1]))
+        elif '-o' in sys.argv:
+            saveHashTree(sys.argv[1])

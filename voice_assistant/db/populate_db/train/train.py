@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from pprint import pprint
 
 
@@ -6,6 +7,10 @@ class SqlOrder:
         self.json = json
 
     def insert_all_train_infos(self):
+        """
+
+        :return: json
+        """
         lines = self.json
         result = {}
 
@@ -27,5 +32,30 @@ class SqlOrder:
 """
 USAGE
 
-inserter = { 'Start_end_stations': {'line_id': 0, 'start_station': 'test_start_station', 'end_station': 'test_end_station'} }
+json = 
+    {
+        'delay': '止まっている',
+        'details': '迷惑行為',
+        'end_station': '池袋',
+        'line': '山手線',
+        'section': '山手線[新宿→池袋]',
+        'start_station': '新宿',
+        'start_time': '13:12',
+        'status': 'ゆったり立てる',
+        'timesOfDay': '2020/10/27 13:12'
+    }
+      
+sql_order = SqlOrder(json)
+
+result =
+    {
+        'lines': {'line_name':  '山手線'},
+        'Start_end_stations': {'start_station': '新宿', 'end_station': '池袋', 'line_id': 'id'},  
+        'trains': {'line_id': 'id', 'start_end_station_id': 'id',
+                            'delay': '止まっている',
+                            'detail': '迷惑行為',
+                            'status': 'ゆったり立てる',
+                            'start_time': '13:12',
+                            'now_time': 'get_now_time'}
+    }
 """
