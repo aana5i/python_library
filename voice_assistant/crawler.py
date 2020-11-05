@@ -19,10 +19,6 @@ class WebCrawler:
         try:
             self.response = urlopen(self.request).read()
         except UnicodeEncodeError:
-            # tmp_url = url.split('/')  # get url and split
-            # begin = tmp_url[0]  # remove the 'https:' to not quote it
-            # end = quote('/'.join(tmp_url[1:]))  # quote the rest
-            # self.url = begin + '/' + end  # reform url
             self.url = self.the_kanji_problem()
 
             self.response = urlopen(self.url).read()
