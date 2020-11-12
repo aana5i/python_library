@@ -17,8 +17,8 @@ class Jourudan:
     def get_all_pages(self):
         self.page_soup = []
         regex = {
-            '遅れ(10分未満)':'遅れ\(\S+分\S+\)',
-            '遅れ(30分以上)':'遅れ\(\S+分\S+\)',
+            '遅れ(10分未満)': '遅れ\(\S+分\S+\)',
+            '遅れ(30分以上)': '遅れ\(\S+分\S+\)',
             '遅れ(10〜30分)': '遅れ\(\S+分\)',
             '止まっている': '止まっている',
             '順調': '順調',
@@ -44,7 +44,7 @@ class Jourudan:
                                 train['delay'] = re.findall(reg, span)[0]
 
                     elif span_counter == 1:
-                        train['start_time'] = span.split(' ')[0]
+                        train['start_time'] = re.findall(r'\d\d:\d\d', span)[0]
 
                         tmp = re.findall(r'(\S+) → (\S+)', span)
 
