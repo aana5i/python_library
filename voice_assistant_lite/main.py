@@ -36,7 +36,6 @@ def get_name():
 def myCommand():
     "listens for commands"
     r = sr.Recognizer()
-    engine.runAndWait()
 
     with sr.Microphone() as source:
         r.pause_threshold = 0.5
@@ -178,6 +177,8 @@ def assistant(command):
         # aana.get_single_audio(f'現在の時間は{now.hour}時{now.minute}分です。')
         engine.say(f'現在の時間は{now.hour}時{now.minute}分です。')
 
+    # execute engine then wait next
+    engine.runAndWait()
 
 while True:
     name = get_name()

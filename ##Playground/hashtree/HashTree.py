@@ -15,12 +15,9 @@ def md5(fname):
     :return: hash_md5 hexdigest
     """
     hash_md5 = hashlib.md5()
-    if isinstance(fname, str):
-        with open(fname, "rb") as f:
-            for chunk in iter(lambda: f.read(CHUNK_SIZE), b""):
-                hash_md5.update(chunk)
-    else:
-        hash_md5.update(fname)
+    with open(fname, "rb") as f:
+        for chunk in iter(lambda: f.read(CHUNK_SIZE), b""):
+            hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
 class Merkle:
@@ -52,9 +49,9 @@ class Merkle:
 
         # error check: file exist
         if os.path.isfile(path):
-            size = os.path.getsize(path)
+            size = os.path.getsize(path) if os.path.getsize(path) else 1
             return MerkleNode(md5(path), path, size=size)
-        
+
         # Path is a directory
         children = []
         hash_str = ""
@@ -65,17 +62,17 @@ class Merkle:
             children.append(child_node)
 
         # return MerkleNode(hashlib.md5(hash_str.encode('utf-8')).hexdigest(), path, children)
-        return MerkleNode(md5(hash_str.encode('utf-8')), path, children)
+        return MerkleNode(hashlib.md5(hash_str.encode('utf-8')).hexdigest(), path, children)
 
 
 class MerkleNode:
     def __init__(self, hash_code, path, children=None, size=None):
         self.hash = hash_code
-        self.path = path
-        self.children = children
+        self.path = path.split('Build')[1][1:]  # use only the relative path
+        if children:
+            self.children = children
         if size:
             self.size = size
-
 
 class MerkleNodeEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -109,6 +106,8 @@ def saveHashTree(path):
     json_path = str(path) + '/merkleTreeHash.json'
     text_path = str(path) + '/merkleRootTreeHash.txt'
 
+    # exclure du tree mais ajouter à l'envoi
+
     json_data = json.loads(_json)
 
     with open(json_path, 'w') as outfile:
@@ -118,6 +117,8 @@ def saveHashTree(path):
         outfile.writelines(json_data['hash'])
         outfile.close()
 
+    return json_data
+
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
         print('Usage: HashTree.py <path>')
@@ -126,3 +127,4 @@ if __name__ == "__main__":
             print(hashTreeForPath(sys.argv[1]))
         elif '-o' in sys.argv:
             saveHashTree(sys.argv[1])
+

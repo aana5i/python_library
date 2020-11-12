@@ -3,12 +3,12 @@
 import os
 import argparse
 import logging
+import datetime
+import pytz
 from add_on.train.jourudan import Jourudan
 from db.populate_db.train.train import SqlOrder
 from db.tools.create_table import DbBuilder
 from db.tools.db_sqlite import DB
-import datetime
-import pytz
 
 
 class ServiceChooser:
