@@ -2,28 +2,38 @@ import json
 import requests
 
 
-
-def compare_hash_trees(key, local_json, server_json, tmp=None):
+def compare_hash_trees(key, local_json, server_json, server_folder_hash_list=None):
     """
     recursively compare local and server json
-    :param key: str  'path'
-    :param json: json Object
-    :return: list
+    :param key: str
+    :param local_json: jsonObject
+    :param server_json: jsonObject
+    :param server_folder_hash_list: List => str
+    :return:
     """
     results = []
-    if tmp:
-        server_json[key] = tmp
+
+    # if we are on a folder, we use a list of all the server's hash on this folder
+    if server_folder_hash_list:
+        server_json[key] = server_folder_hash_list
+
+    # only send the file path in bucket, never send the folder
     if 'size' in local_json:
+        # case: the file is not present on the server
         if key not in server_json:
             results.append(local_json['path'].encode('utf-8'))
 
+        # case: the file is different on the server
         elif local_json[key] not in server_json[key]:
             results.append(local_json['path'].encode('utf-8'))
 
+    # folder
     if 'children' in local_json and local_json['children']:
-        tmp = [hash['hash'] for hash in server_json['children']]
+        # create the folder hash list
+        server_folder_hash_list = [hash['hash'] for hash in server_json['children']]
+        # zip the current json and send the hash list
         for folder, folder2 in zip(local_json['children'], server_json['children']):
-            for result in compare_hash_trees(key, folder, folder2, tmp):
+            for result in compare_hash_trees(key, folder, folder2, server_folder_hash_list):
                 results.append(result)
 
     return results
