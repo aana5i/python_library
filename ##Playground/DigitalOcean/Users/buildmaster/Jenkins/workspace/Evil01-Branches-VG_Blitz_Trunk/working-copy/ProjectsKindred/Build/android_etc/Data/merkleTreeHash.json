@@ -1,6 +1,6 @@
 {
   "path": "android_etc/Data", 
-  "hash": "41a688186378d6a7a70c13f855c22d83", 
+  "hash": "2a017e0623f318d89cf4257fa9cff3e3", 
   "children": [
     {
       "path": "android_etc/Data\\first folder", 
@@ -9,7 +9,6 @@
         {
           "path": "android_etc/Data\\first folder\\second file.txt", 
           "hash": "d41d8cd98f00b204e9800998ecf8427e", 
-          "children": null, 
           "size": 1
         }
       ]
@@ -17,26 +16,22 @@
     {
       "path": "android_etc/Data\\first txt - Copie.txt", 
       "hash": "d41d8cd98f00b204e9800998ecf8427e", 
-      "children": null, 
       "size": 1
     }, 
     {
       "path": "android_etc/Data\\first txt.txt", 
       "hash": "d41d8cd98f00b204e9800998ecf8427e", 
-      "children": null, 
       "size": 1
     }, 
     {
       "path": "android_etc/Data\\merkleRootTreeHash.txt", 
-      "hash": "09f11a5790ee22edf7fca301d33af4d1", 
-      "children": null, 
+      "hash": "2b292cf1af90e755a54de70dad077f70", 
       "size": 32
     }, 
     {
       "path": "android_etc/Data\\merkleTreeHash.json", 
-      "hash": "70309acd5c788c1ecfeddbae8916a1c1", 
-      "children": null, 
-      "size": 1477
+      "hash": "209b830a752f0fcbc7db7518a4e2f1e1", 
+      "size": 1196
     }, 
     {
       "path": "android_etc/Data\\second folder", 
@@ -45,7 +40,6 @@
         {
           "path": "android_etc/Data\\second folder\\second file.txt", 
           "hash": "d41d8cd98f00b204e9800998ecf8427e", 
-          "children": null, 
           "size": 1
         }
       ]
