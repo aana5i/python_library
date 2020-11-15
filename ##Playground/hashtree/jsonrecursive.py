@@ -26,17 +26,13 @@ def compare_hash_trees(key, local_json, server_json, server_folder_hash_list=Non
     """
     results = []
 
-
-
     # if we are on a folder, we use a list of all the server's hash on this folder
     if server_folder_hash_list:
         server_json[key] = server_folder_hash_list
 
-
     # if we are on a folder, we use a list of all the server's hash on this folder
     if server_folder_hash_list:
         server_json[key] = server_folder_hash_list
-
 
     # only send the file path in bucket, never send the folder
     if 'size' in local_json:
@@ -54,10 +50,7 @@ def compare_hash_trees(key, local_json, server_json, server_folder_hash_list=Non
         server_folder_hash_list = [hash['hash'] for hash in server_json['children']]
         # zip the current json and send the hash list
         for folder, folder2 in zip(local_json['children'], server_json['children']):
-
             print(folder)
-
-
             for result in compare_hash_trees(key, folder, folder2, server_folder_hash_list):
                 results.append(result)
 

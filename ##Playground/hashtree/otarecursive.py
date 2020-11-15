@@ -27,11 +27,21 @@ def compare_hash_tree(local_json, server_json):
                 # adds the file to the change list as an UPDATE action
                 results['update'].append(value_source)
 
+        """
+        check is the asset exist on the current folder path
+        
+        **like in jsonrecursive**
+        check if the key isinstance of list
+        create the server_folder 'path' list
+        loop on zip local and server list
+        
+        """
         # c.	Mismatch name (path),
         if key_source == 'path' and value_source != value_distant:
             print(value_source, value_distant)
+
             # unknown asset exists on server
-            if server_json['path'] != value_source:
+            if value_source not in server_json.values():
                 # adds the file to the change list as ADD action
                 results['add'].append(value_source)
 
