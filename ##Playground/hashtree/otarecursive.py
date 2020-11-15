@@ -22,19 +22,21 @@ def compare_hash_tree(local_json, server_json):
         if key_source == 'path' \
                 and key_source == key_distant \
                 and value_source == value_distant \
-                and local_json['hash'] != server_json['hash']\
-                and 'size' in local_json.keys():
-            # adds the file to the change list as an UPDATE action
-            results['update'].append(value_source)
+                and local_json['hash'] != server_json['hash']:
+            if 'size' in local_json.keys():
+                # adds the file to the change list as an UPDATE action
+                results['update'].append(value_source)
 
-        # c.	Mismatch name on server
-        if key_source == 'path' and key_source == key_distant:
-            # on server
-            if value_source and value_source not in server_json['hash']:
+        # c.	Mismatch name (path),
+        if key_source == 'path' and value_source != value_distant:
+            print(value_source, value_distant)
+            # unknown asset exists on server
+            if server_json['path'] != value_source:
                 # adds the file to the change list as ADD action
                 results['add'].append(value_source)
-            # on client
-            elif value_distant in server_json['hash'] and value_distant not in local_json['hash']:
+
+            # unknown asset exists on client
+            else:
                 # adds the file to the change list as DELETE action
                 results['delete'].append(value_source)
         #TODO  unknown asset exists on server
@@ -60,13 +62,12 @@ def test_platform(platform):
     # ota_server_curr_root_hash = connection.json()
     #
     # connection.close()
-    ota_server_curr_root_hash = open('iphonemerkleTreeHash2.json', "r")
-    f2 = open('iphonemerkleTreeHash.json', "r")
+    ota_server_curr_root_hash = open("iphonemerkleTreeHash2.json", "r")
+    client = open("iphonemerkleTreeHash.json", "r")
 
+    print(compare_hash_tree(json.loads(client.read()), json.loads(ota_server_curr_root_hash.read())))
 
-    pprint(compare_hash_tree(json.loads(ota_server_curr_root_hash.read()), json.loads(f2.read())))
-
-    f2.close()
+    client.close()
 
 
 platform = 'iphone4'
