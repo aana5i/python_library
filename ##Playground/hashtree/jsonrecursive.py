@@ -2,7 +2,7 @@ import json
 import requests
 
 
-<<<<<<< HEAD
+
 """
 1.	The client connects to the OTA server from the platform’s OTA server info request
 2.	The client downloads the merkle tree from that repo
@@ -14,8 +14,7 @@ c.	Mismatch name, unknown asset exists on server, which adds the file to the cha
 d.	Mismatch name, unknown asset exists on the client, which adds the file to the change list as DELETE action
 """
 
-=======
->>>>>>> fc331cfcaaf55f7d91d634b2c000a67aa0962a3e
+
 def compare_hash_trees(key, local_json, server_json, server_folder_hash_list=None):
     """
     recursively compare local and server json
@@ -27,18 +26,18 @@ def compare_hash_trees(key, local_json, server_json, server_folder_hash_list=Non
     """
     results = []
 
-<<<<<<< HEAD
+
 
     # if we are on a folder, we use a list of all the server's hash on this folder
     if server_folder_hash_list:
         server_json[key] = server_folder_hash_list
 
-=======
+
     # if we are on a folder, we use a list of all the server's hash on this folder
     if server_folder_hash_list:
         server_json[key] = server_folder_hash_list
 
->>>>>>> fc331cfcaaf55f7d91d634b2c000a67aa0962a3e
+
     # only send the file path in bucket, never send the folder
     if 'size' in local_json:
         # case: the file is not present on the server
@@ -55,17 +54,17 @@ def compare_hash_trees(key, local_json, server_json, server_folder_hash_list=Non
         server_folder_hash_list = [hash['hash'] for hash in server_json['children']]
         # zip the current json and send the hash list
         for folder, folder2 in zip(local_json['children'], server_json['children']):
-<<<<<<< HEAD
+
             print(folder)
-=======
->>>>>>> fc331cfcaaf55f7d91d634b2c000a67aa0962a3e
+
+
             for result in compare_hash_trees(key, folder, folder2, server_folder_hash_list):
                 results.append(result)
 
     return results
 
 
-<<<<<<< HEAD
+
 def test_platform(platform):
     root_hash = 'merkleTreeHash.json'
     connection = requests.get("https://assets.vgas-game.com/{}/Data/{}".format(platform, root_hash))
@@ -74,7 +73,7 @@ def test_platform(platform):
     # connection = httplib.HTTPSConnection("assets.vgas-game.com", 443, timeout=10)
     # connection.request("GET", "{}/Data/{}".format(platform, root_hash))
 
-=======
+
 # def compare_hash_trees(key, local_json, server_json):
 #     result = []
 #
@@ -120,7 +119,7 @@ def test_platform(platform):
     # connection = httplib.HTTPSConnection("assets.vgas-game.com", 443, timeout=10)
     # connection.request("GET", "{}/Data/{}".format(platform, root_hash))
     ota_server_curr_root_hash = connection.json()
->>>>>>> fc331cfcaaf55f7d91d634b2c000a67aa0962a3e
+
     connection.close()
 
     f2 = open('iphonemerkleTreeHash.json', "r")
@@ -137,8 +136,5 @@ def test_platform(platform):
 
 
 platform = 'iphone4'
-<<<<<<< HEAD
+
 test_platform(platform)
-=======
-test_platform(platform)
->>>>>>> fc331cfcaaf55f7d91d634b2c000a67aa0962a3e
