@@ -37,6 +37,7 @@ class Merkle:
             raise Exception("Root path should be a directory")
 
         # send the directory to the hash func, save created the hash
+
         self.root = self.create_merkle_node(self.root_directory)
         self.top_hash = self.root.hash
 
@@ -46,7 +47,7 @@ class Merkle:
         :param path: str, File or Directory
         :return:
         """
-
+        print(path)
         # error check: file exist
         if os.path.isfile(path):
             size = os.path.getsize(path) if os.path.getsize(path) else 1
@@ -105,8 +106,6 @@ def saveHashTree(path):
 
     json_path = str(path) + '/merkleTreeHash.json'
     text_path = str(path) + '/merkleRootTreeHash.txt'
-
-    # exclure du tree mais ajouter à l'envoi
 
     json_data = json.loads(_json)
 
