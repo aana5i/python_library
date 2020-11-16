@@ -2,7 +2,6 @@ import json
 import requests
 
 
-
 def compare_hash_trees(key, local_json, server_json, server_folder_hash_list=None):
     """
     recursively compare local and server json
@@ -38,6 +37,7 @@ def compare_hash_trees(key, local_json, server_json, server_folder_hash_list=Non
                 results.append(result)
 
     return results
+
 
 # def compare_hash_trees(key, local_json, server_json):
 #     result = []
