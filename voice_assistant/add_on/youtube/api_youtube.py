@@ -9,7 +9,7 @@ import random
 
 class Youtube:
     def __init__(self):
-        self.API_KEY = ['AIzaSyChJkOgioBlWNfQ9k0rDY93cJy530Okok4', 'AIzaSyAy0Im0JhZDw4tcdWXqQhFvEcmyWNCkC10']
+        self.API_KEY = [x]
 
     def dictResult(self, arr):
         """
