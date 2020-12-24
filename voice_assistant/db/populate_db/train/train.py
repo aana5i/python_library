@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 from pprint import pprint
 
@@ -16,10 +17,10 @@ class SqlOrder:
 
         for counter, line in enumerate(lines):
             train = {
-                counter: {'lines': {'line_name': line['line']},
-                          'Start_end_stations': {'start_station': line['start_station'], 'end_station': line['end_station'],
+                counter: {'Train_lines': {'line_name': line['line']},
+                          'Train_Start_end_stations': {'start_station': line['start_station'], 'end_station': line['end_station'],
                                                  'line_id': 'id'},
-                          'trains': {'line_id': 'id', 'start_end_station_id': 'id', 'delay': line['delay'],
+                          'Train_trains': {'line_id': 'id', 'start_end_station_id': 'id', 'delay': line['delay'],
                                      'detail': line['details'] if 'details' in line else '', 'status': line['status'], 'start_time': line['start_time'],
                                      'now_time': 'get_now_time'}}
                       }
@@ -49,9 +50,9 @@ sql_order = SqlOrder(json)
 
 result =
     {
-        'lines': {'line_name':  '山手線'},
-        'Start_end_stations': {'start_station': '新宿', 'end_station': '池袋', 'line_id': 'id'},  
-        'trains': {'line_id': 'id', 'start_end_station_id': 'id',
+        'Train_lines': {'line_name':  '山手線'},
+        'Train_Start_end_stations': {'start_station': '新宿', 'end_station': '池袋', 'line_id': 'id'},  
+        'Train_trains': {'line_id': 'id', 'start_end_station_id': 'id',
                             'delay': '止まっている',
                             'detail': '迷惑行為',
                             'status': 'ゆったり立てる',

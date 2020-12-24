@@ -1,0 +1,4 @@
+{
+  "Market": ["id integer PRIMARY KEY", "market_name text NOT NULL", "gps_id integer NOT NULL"],
+  "Products": ["id integer PRIMARY KEY", "product_name text NOT NULL", "probability text NOT NULL"]
+}

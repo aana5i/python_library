@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 from pprint import pprint
@@ -40,9 +41,10 @@ class Builder:
         # en prennant les informations depuis le profil de lutilisateur nous sauront quel train, ligne, heure doit etre utilise chaqu jours
 
 
-bu = Builder()
-url = 'https://www.tetsudo.com/traffic/category/新幹線/'
-line = '山陽新幹線'
-# bu.get_train_line_data(url, line)
-bu.get_regions_lines()
-# TODO delete!!
+if __name__ == '__main__':
+    bu = Builder()
+    url = 'https://www.tetsudo.com/traffic/category/新幹線/'
+    line = '山陽新幹線'
+    # bu.get_train_line_data(url, line)
+    bu.get_regions_lines()
+    # TODO delete!!

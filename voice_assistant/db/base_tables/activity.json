@@ -1,0 +1,5 @@
+{
+  "activity": ["id integer PRIMARY KEY", "activity_name text NOT NULL"],
+  "profil": ["id integer PRIMARY KEY", "profile_name text NOT NULL"],
+  "profils":  ["id integer PRIMARY KEY", "hours text NOT NULL", "event text NOT NULL", "profil_id integer NOT NULL"]
+}

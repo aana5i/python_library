@@ -1,0 +1,4 @@
+{
+  "gps": ["id integer PRIMARY KEY", "latitude text NOT NULL", "longitude text NOT NULL"],
+  "location": ["id integer PRIMARY KEY", "gps_id integer NOT NULL", "location_name text NOT NULL"]
+}

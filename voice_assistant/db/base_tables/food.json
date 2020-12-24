@@ -1,0 +1,14 @@
+{
+  "recipe": [
+    "id integer PRIMARY KEY",
+    "recipe_name text NOT NULL",
+    "recipe_url text NOT NULL",
+    "ingredients text NOT NULL",
+    "preparation text NOT NULL",
+    "datetime text NOT NULL",
+    "recipe_author text NOT NULL",
+    "recipe_author_page_url text NOT NULL",
+    "healthy_score text NOT NULL",
+    "datetime_day text NOT NULL"
+  ]
+}

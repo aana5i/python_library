@@ -1,0 +1,13 @@
+{
+    "user_food_balance": ["id integer PRIMARY KEY", "user_food_balance_score text NOT NULL", "user_id integer NOT NULL" , "datetime text NOT NULL"],
+    "user": ["id integer PRIMARY KEY", "name text NOT NULL", "address text NOT NULL", "profil text NOT NULL", "voice_id integer NOT NULL", "location_id integer NOT NULL", "mail text NOT NULL", "password text NOT NULL", "city text NOT NULL"],
+    "user_youtube_activity_session": ["id integer PRIMARY KEY", "user_youtube_video_id integer NOT NULL", "start_time text NOT NULL", "end_time text NOT NULL", "user_id integer NOT NULL", "datetime text NOT NULL"],
+    "user_youtube_video": ["id integer PRIMARY KEY", "video_id integer NOT NULL", "datetime text NOT NULL", "theme text NOT NULL", "title text NOT NULL", "author text NOT NULL", "user_id integer NOT NULL", "description text NOT NULL"],
+    "user_train": ["id integer PRIMARY KEY", "train_id integer NOT NULL", "user_id integer NOT NULL", "datetime text NOT NULL", "start_station text NOT NULL", "end_station text NOT NULL"],
+    "user_recipe": ["id integer PRIMARY KEY", "user_id integer NOT NULL", "recipe_id integer NOT NULL", "datetime text NOT NULL"],
+    "user_meteo": ["id integer PRIMARY KEY", "user_id integer NOT NULL", "datetime text NOT NULL", "day text NOT NULL", "city text NOT NULL"],
+    "user_activity": ["id integer PRIMARY KEY", "day_of_week text NOT NULL", "datetime text NOT NULL", "activity text NOT NULL", "start_time text NOT NULL", "end_time text NOT NULL", "user_id integer NOT NULL", "activity_id integer NOT NULL", "probability text NOT NULL"],
+    "user_order": ["id integer PRIMARY KEY", "user_id integer NOT NULL", "activity_id integer NOT NULL", "datetime integer NOT NULL", "user_order text NOT null"],
+    "user_market": ["id integer PRIMARY KEY", "user_id integer NOT NULL", "market_id integer NOT NULL", "datetime integer NOT NULL", "product text NOT null"],
+    "user_conversation": ["id integer PRIMARY KEY", "user_id integer NOT NULL", "activity_id integer NOT NULL", "confirmation text NOT NULL", "response text NOT NULL","done_flag text NOT null"]
+}
